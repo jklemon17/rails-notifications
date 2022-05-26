@@ -1,0 +1,875 @@
+Sentry HTTP Transport will connect to https://o282181.ingest.sentry.io
+Initializing the background worker with 2 threads
+[Sessions] Sessions won't be captured without a valid release
+Killing session flusher
+Shutting down background worker
+Sentry HTTP Transport will connect to https://o282181.ingest.sentry.io
+Initializing the background worker with 2 threads
+[Sessions] Sessions won't be captured without a valid release
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (125.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "playbook"[0m
+  [1m[35m (107.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_playbook"[0m
+  [1m[35m (367.4ms)[0m  [1m[35mCREATE DATABASE "playbook" ENCODING = 'utf8'[0m
+  [1m[35m (282.2ms)[0m  [1m[35mCREATE DATABASE "test_playbook" ENCODING = 'utf8'[0m
+  [1m[35mSQL (7.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "pgcrypto"[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_admin_comments" CASCADE[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" bigserial primary key, "namespace" character varying, "body" text, "resource_type" character varying, "resource_id" bigint, "author_type" character varying, "author_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments"  ("author_type", "author_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_namespace" ON "active_admin_comments"  ("namespace")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments"  ("resource_type", "resource_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" uuid NOT NULL, "blob_id" uuid NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "admin_users" CASCADE[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_email" ON "admin_users"  ("email")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_reset_password_token" ON "admin_users"  ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "comments" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "order_id" uuid NOT NULL, "user_id" uuid NOT NULL, "message" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_order_id" ON "comments"  ("order_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "friendships" CASCADE[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "friendships" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "user_id" uuid, "friend_id" uuid, "status" integer DEFAULT 0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "activity_score" integer DEFAULT 0)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_friendships_on_friend_id" ON "friendships"  ("friend_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_friendships_on_user_id_and_friend_id" ON "friendships"  ("user_id", "friend_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_friendships_on_user_id" ON "friendships"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "games" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sportradar_id" character varying, "sport_id" uuid NOT NULL, "home_team_score" integer, "away_team_score" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "game_status" integer DEFAULT 0, "week" character varying, "home_team_id" uuid, "away_team_id" uuid, "scheduled_time" timestamp, "market_id" uuid, "quarter" integer, "clock" character varying)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_away_team_id" ON "games"  ("away_team_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_home_team_id" ON "games"  ("home_team_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_market_id" ON "games"  ("market_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_sport_id" ON "games"  ("sport_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "likes" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "order_id" uuid NOT NULL, "user_id" uuid NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_order_id" ON "likes"  ("order_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_user_id" ON "likes"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "markets" CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "markets" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sport_id" uuid, "start_time" timestamp, "end_time" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_markets_on_sport_id" ON "markets"  ("sport_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "orders" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "user_id" uuid NOT NULL, "title" character varying, "short" boolean, "price_per_share" integer, "num_shares" integer, "total_value" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "player_game_id" uuid NOT NULL, "compliant" boolean DEFAULT FALSE, "market_id" uuid, "privacy" integer DEFAULT 0, "refunded" boolean DEFAULT FALSE, "ride_fade_id" uuid)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_market_id" ON "orders"  ("market_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_player_game_id" ON "orders"  ("player_game_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_user_id" ON "orders"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "payouts" CASCADE[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "payouts" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "player_game_id" uuid NOT NULL, "order_id" uuid NOT NULL, "amount" integer, "status" integer DEFAULT 0, "created" timestamp, "completed" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "market_id" uuid)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_payouts_on_market_id" ON "payouts"  ("market_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_payouts_on_order_id" ON "payouts"  ("order_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_payouts_on_player_game_id" ON "payouts"  ("player_game_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "platform_variables" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "platform_variables" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "variable_name" character varying, "value" integer DEFAULT 0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "player_game_stats" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "player_game_stats" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "stat_name" character varying, "value" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "player_sportradar_id" character varying, "game_sportradar_id" character varying, "player_game_id" uuid)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_player_game_stats_on_player_game_id" ON "player_game_stats"  ("player_game_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "player_games" CASCADE[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "player_games" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "player_id" uuid NOT NULL, "game_id" uuid NOT NULL, "date" timestamp, "score" float, "projection" float DEFAULT 0.0, "injury_status" integer DEFAULT 0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "shares_bought" integer DEFAULT 0, "shares_sold" integer DEFAULT 0, "market_id" uuid, "dollars_bought" integer DEFAULT 0, "dollars_sold" integer DEFAULT 0)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_player_games_on_game_id" ON "player_games"  ("game_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_player_games_on_market_id" ON "player_games"  ("market_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_player_games_on_player_id" ON "player_games"  ("player_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "players" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "players" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sportradar_id" character varying, "sport_id" uuid NOT NULL, "first_name" character varying, "last_name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "position" character varying, "team_id" uuid)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_players_on_sport_id" ON "players"  ("sport_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_players_on_team_id" ON "players"  ("team_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "sports" CASCADE[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "sports" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "teams" CASCADE[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "teams" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sport_id" uuid NOT NULL, "sportradar_id" character varying, "alias" character varying, "name" character varying, "market" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_teams_on_sport_id" ON "teams"  ("sport_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "transactions" CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "user_id" uuid NOT NULL, "deposit" boolean, "status" integer DEFAULT 0, "amount" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "bonus_amount" integer DEFAULT 0)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_transactions_on_user_id" ON "transactions"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "confirmation_token" character varying, "confirmed_at" timestamp, "confirmation_sent_at" timestamp, "unconfirmed_email" character varying, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" character varying, "locked_at" timestamp, "jti" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "winnings" integer DEFAULT 0, "bonus_balance" integer DEFAULT 0, "color" character varying, "reset_code" character varying, "first_name" character varying, "last_name" character varying, "username" character varying, "order_privacy" integer DEFAULT 0, "tsevo_status" integer DEFAULT 0, "date_of_birth" date, "unplayed_deposits" integer DEFAULT 0, "activity_score" integer DEFAULT 0, "one_signal_id" character varying)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_confirmation_token" ON "users"  ("confirmation_token")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_jti" ON "users"  ("jti")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_unlock_token" ON "users"  ("unlock_token")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_453b7b85cf"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "friendships" ADD CONSTRAINT "fk_rails_e3733b59b7"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "friendships" ADD CONSTRAINT "fk_rails_d78dc9c7fd"
+FOREIGN KEY ("friend_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_0ec38486d7"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_0a5c0aaa56"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_5b075ea244"
+FOREIGN KEY ("away_team_id")
+  REFERENCES "teams" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_0b3e4ed788"
+FOREIGN KEY ("home_team_id")
+  REFERENCES "teams" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_a1c73a4cf2"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_1e09b5dabf"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "markets" ADD CONSTRAINT "fk_rails_20633048f0"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_7d6db210d2"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_f868b47f6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "payouts" ADD CONSTRAINT "fk_rails_1a4c3b11ee"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "payouts" ADD CONSTRAINT "fk_rails_40d29ae8eb"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "payouts" ADD CONSTRAINT "fk_rails_6405f6554f"
+FOREIGN KEY ("player_game_id")
+  REFERENCES "player_games" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "player_game_stats" ADD CONSTRAINT "fk_rails_7e8da8a1d9"
+FOREIGN KEY ("player_game_id")
+  REFERENCES "player_games" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "player_games" ADD CONSTRAINT "fk_rails_ca29b77afd"
+FOREIGN KEY ("game_id")
+  REFERENCES "games" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "player_games" ADD CONSTRAINT "fk_rails_da66834356"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "player_games" ADD CONSTRAINT "fk_rails_9c9f7c8f33"
+FOREIGN KEY ("player_id")
+  REFERENCES "players" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "players" ADD CONSTRAINT "fk_rails_3846bb5a21"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "players" ADD CONSTRAINT "fk_rails_8880a915a5"
+FOREIGN KEY ("team_id")
+  REFERENCES "teams" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "teams" ADD CONSTRAINT "fk_rails_11a3a42f5f"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "transactions" ADD CONSTRAINT "fk_rails_77364e6416"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220114112046)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210622155647),
+(20210622160322),
+(20210622161336),
+(20210727170649),
+(20210826210940),
+(20210830185139),
+(20210830202301),
+(20210910120631),
+(20210925154521),
+(20210925170210),
+(20211006174457),
+(20211007125148),
+(20220112190249);
+
+[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-05-26 17:48:01.770895"], ["updated_at", "2022-05-26 17:48:01.770895"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "81448967b22076fc9dda2b2f8956bcb3a54850b7"], ["created_at", "2022-05-26 17:48:01.781470"], ["updated_at", "2022-05-26 17:48:01.781470"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (3.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "pgcrypto"[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_admin_comments" CASCADE[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" bigserial primary key, "namespace" character varying, "body" text, "resource_type" character varying, "resource_id" bigint, "author_type" character varying, "author_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments"  ("author_type", "author_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_namespace" ON "active_admin_comments"  ("namespace")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments"  ("resource_type", "resource_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" uuid NOT NULL, "blob_id" uuid NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "admin_users" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_email" ON "admin_users"  ("email")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_reset_password_token" ON "admin_users"  ("reset_password_token")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "comments" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "order_id" uuid NOT NULL, "user_id" uuid NOT NULL, "message" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_order_id" ON "comments"  ("order_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "friendships" CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "friendships" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "user_id" uuid, "friend_id" uuid, "status" integer DEFAULT 0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "activity_score" integer DEFAULT 0)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_friendships_on_friend_id" ON "friendships"  ("friend_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_friendships_on_user_id_and_friend_id" ON "friendships"  ("user_id", "friend_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_friendships_on_user_id" ON "friendships"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "games" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sportradar_id" character varying, "sport_id" uuid NOT NULL, "home_team_score" integer, "away_team_score" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "game_status" integer DEFAULT 0, "week" character varying, "home_team_id" uuid, "away_team_id" uuid, "scheduled_time" timestamp, "market_id" uuid, "quarter" integer, "clock" character varying)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_away_team_id" ON "games"  ("away_team_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_home_team_id" ON "games"  ("home_team_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_market_id" ON "games"  ("market_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_sport_id" ON "games"  ("sport_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "likes" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "order_id" uuid NOT NULL, "user_id" uuid NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_order_id" ON "likes"  ("order_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_user_id" ON "likes"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "markets" CASCADE[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "markets" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sport_id" uuid, "start_time" timestamp, "end_time" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_markets_on_sport_id" ON "markets"  ("sport_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders" CASCADE[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "orders" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "user_id" uuid NOT NULL, "title" character varying, "short" boolean, "price_per_share" integer, "num_shares" integer, "total_value" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "player_game_id" uuid NOT NULL, "compliant" boolean DEFAULT FALSE, "market_id" uuid, "privacy" integer DEFAULT 0, "refunded" boolean DEFAULT FALSE, "ride_fade_id" uuid)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_market_id" ON "orders"  ("market_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_player_game_id" ON "orders"  ("player_game_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_user_id" ON "orders"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "payouts" CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "payouts" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "player_game_id" uuid NOT NULL, "order_id" uuid NOT NULL, "amount" integer, "status" integer DEFAULT 0, "created" timestamp, "completed" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "market_id" uuid)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_payouts_on_market_id" ON "payouts"  ("market_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_payouts_on_order_id" ON "payouts"  ("order_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_payouts_on_player_game_id" ON "payouts"  ("player_game_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "platform_variables" CASCADE[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "platform_variables" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "variable_name" character varying, "value" integer DEFAULT 0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "player_game_stats" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "player_game_stats" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "stat_name" character varying, "value" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "player_sportradar_id" character varying, "game_sportradar_id" character varying, "player_game_id" uuid)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_player_game_stats_on_player_game_id" ON "player_game_stats"  ("player_game_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "player_games" CASCADE[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "player_games" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "player_id" uuid NOT NULL, "game_id" uuid NOT NULL, "date" timestamp, "score" float, "projection" float DEFAULT 0.0, "injury_status" integer DEFAULT 0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "shares_bought" integer DEFAULT 0, "shares_sold" integer DEFAULT 0, "market_id" uuid, "dollars_bought" integer DEFAULT 0, "dollars_sold" integer DEFAULT 0)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_player_games_on_game_id" ON "player_games"  ("game_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_player_games_on_market_id" ON "player_games"  ("market_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_player_games_on_player_id" ON "player_games"  ("player_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "players" CASCADE[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "players" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sportradar_id" character varying, "sport_id" uuid NOT NULL, "first_name" character varying, "last_name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "position" character varying, "team_id" uuid)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_players_on_sport_id" ON "players"  ("sport_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_players_on_team_id" ON "players"  ("team_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "sports" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "sports" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "teams" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "teams" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sport_id" uuid NOT NULL, "sportradar_id" character varying, "alias" character varying, "name" character varying, "market" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_teams_on_sport_id" ON "teams"  ("sport_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "transactions" CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "user_id" uuid NOT NULL, "deposit" boolean, "status" integer DEFAULT 0, "amount" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "bonus_amount" integer DEFAULT 0)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_transactions_on_user_id" ON "transactions"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "confirmation_token" character varying, "confirmed_at" timestamp, "confirmation_sent_at" timestamp, "unconfirmed_email" character varying, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" character varying, "locked_at" timestamp, "jti" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "winnings" integer DEFAULT 0, "bonus_balance" integer DEFAULT 0, "color" character varying, "reset_code" character varying, "first_name" character varying, "last_name" character varying, "username" character varying, "order_privacy" integer DEFAULT 0, "tsevo_status" integer DEFAULT 0, "date_of_birth" date, "unplayed_deposits" integer DEFAULT 0, "activity_score" integer DEFAULT 0, "one_signal_id" character varying)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_confirmation_token" ON "users"  ("confirmation_token")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_jti" ON "users"  ("jti")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_unlock_token" ON "users"  ("unlock_token")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_453b7b85cf"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "friendships" ADD CONSTRAINT "fk_rails_e3733b59b7"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "friendships" ADD CONSTRAINT "fk_rails_d78dc9c7fd"
+FOREIGN KEY ("friend_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_0ec38486d7"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_0a5c0aaa56"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_5b075ea244"
+FOREIGN KEY ("away_team_id")
+  REFERENCES "teams" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_0b3e4ed788"
+FOREIGN KEY ("home_team_id")
+  REFERENCES "teams" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_a1c73a4cf2"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_1e09b5dabf"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "markets" ADD CONSTRAINT "fk_rails_20633048f0"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_7d6db210d2"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_f868b47f6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "payouts" ADD CONSTRAINT "fk_rails_1a4c3b11ee"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "payouts" ADD CONSTRAINT "fk_rails_40d29ae8eb"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "payouts" ADD CONSTRAINT "fk_rails_6405f6554f"
+FOREIGN KEY ("player_game_id")
+  REFERENCES "player_games" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "player_game_stats" ADD CONSTRAINT "fk_rails_7e8da8a1d9"
+FOREIGN KEY ("player_game_id")
+  REFERENCES "player_games" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "player_games" ADD CONSTRAINT "fk_rails_ca29b77afd"
+FOREIGN KEY ("game_id")
+  REFERENCES "games" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "player_games" ADD CONSTRAINT "fk_rails_da66834356"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "player_games" ADD CONSTRAINT "fk_rails_9c9f7c8f33"
+FOREIGN KEY ("player_id")
+  REFERENCES "players" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "players" ADD CONSTRAINT "fk_rails_3846bb5a21"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "players" ADD CONSTRAINT "fk_rails_8880a915a5"
+FOREIGN KEY ("team_id")
+  REFERENCES "teams" ("id")
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "teams" ADD CONSTRAINT "fk_rails_11a3a42f5f"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "transactions" ADD CONSTRAINT "fk_rails_77364e6416"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220114112046)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210622155647),
+(20210622160322),
+(20210622161336),
+(20210727170649),
+(20210826210940),
+(20210830185139),
+(20210830202301),
+(20210910120631),
+(20210925154521),
+(20210925170210),
+(20211006174457),
+(20211007125148),
+(20220112190249);
+
+[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-05-26 17:48:01.993606"], ["updated_at", "2022-05-26 17:48:01.993606"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-05-26 17:48:01.996074"], ["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "81448967b22076fc9dda2b2f8956bcb3a54850b7"], ["created_at", "2022-05-26 17:48:01.997996"], ["updated_at", "2022-05-26 17:48:01.997996"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Killing session flusher
+Shutting down background worker
+Sentry HTTP Transport will connect to https://o282181.ingest.sentry.io
+Initializing the background worker with 2 threads
+[Sessions] Sessions won't be captured without a valid release
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (116.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "playbook"[0m
+  [1m[35m (108.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_playbook"[0m
+  [1m[35m (336.9ms)[0m  [1m[35mCREATE DATABASE "playbook" ENCODING = 'utf8'[0m
+  [1m[35m (300.7ms)[0m  [1m[35mCREATE DATABASE "test_playbook" ENCODING = 'utf8'[0m
+  [1m[35mSQL (4.0ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "pgcrypto"[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_admin_comments" CASCADE[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" bigserial primary key, "namespace" character varying, "body" text, "resource_type" character varying, "resource_id" bigint, "author_type" character varying, "author_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments"  ("author_type", "author_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_namespace" ON "active_admin_comments"  ("namespace")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments"  ("resource_type", "resource_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" uuid NOT NULL, "blob_id" uuid NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "admin_users" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_email" ON "admin_users"  ("email")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_reset_password_token" ON "admin_users"  ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "comments" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "order_id" uuid NOT NULL, "user_id" uuid NOT NULL, "message" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_order_id" ON "comments"  ("order_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "friendships" CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "friendships" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "user_id" uuid, "friend_id" uuid, "status" integer DEFAULT 0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "activity_score" integer DEFAULT 0)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_friendships_on_friend_id" ON "friendships"  ("friend_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_friendships_on_user_id_and_friend_id" ON "friendships"  ("user_id", "friend_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_friendships_on_user_id" ON "friendships"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "games" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sportradar_id" character varying, "sport_id" uuid NOT NULL, "home_team_score" integer, "away_team_score" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "game_status" integer DEFAULT 0, "week" character varying, "home_team_id" uuid, "away_team_id" uuid, "scheduled_time" timestamp, "market_id" uuid, "quarter" integer, "clock" character varying)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_away_team_id" ON "games"  ("away_team_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_home_team_id" ON "games"  ("home_team_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_market_id" ON "games"  ("market_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_sport_id" ON "games"  ("sport_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "likes" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "order_id" uuid NOT NULL, "user_id" uuid NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_order_id" ON "likes"  ("order_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_user_id" ON "likes"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "markets" CASCADE[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "markets" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sport_id" uuid, "start_time" timestamp, "end_time" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_markets_on_sport_id" ON "markets"  ("sport_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "orders" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "user_id" uuid NOT NULL, "title" character varying, "short" boolean, "price_per_share" integer, "num_shares" integer, "total_value" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "player_game_id" uuid NOT NULL, "compliant" boolean DEFAULT FALSE, "market_id" uuid, "privacy" integer DEFAULT 0, "refunded" boolean DEFAULT FALSE, "ride_fade_id" uuid)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_market_id" ON "orders"  ("market_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_player_game_id" ON "orders"  ("player_game_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_user_id" ON "orders"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "payouts" CASCADE[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "payouts" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "player_game_id" uuid NOT NULL, "order_id" uuid NOT NULL, "amount" integer, "status" integer DEFAULT 0, "created" timestamp, "completed" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "market_id" uuid)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_payouts_on_market_id" ON "payouts"  ("market_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_payouts_on_order_id" ON "payouts"  ("order_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_payouts_on_player_game_id" ON "payouts"  ("player_game_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "platform_variables" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "platform_variables" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "variable_name" character varying, "value" integer DEFAULT 0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "player_game_stats" CASCADE[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "player_game_stats" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "stat_name" character varying, "value" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "player_sportradar_id" character varying, "game_sportradar_id" character varying, "player_game_id" uuid)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_player_game_stats_on_player_game_id" ON "player_game_stats"  ("player_game_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "player_games" CASCADE[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "player_games" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "player_id" uuid NOT NULL, "game_id" uuid NOT NULL, "date" timestamp, "score" float, "projection" float DEFAULT 0.0, "injury_status" integer DEFAULT 0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "shares_bought" integer DEFAULT 0, "shares_sold" integer DEFAULT 0, "market_id" uuid, "dollars_bought" integer DEFAULT 0, "dollars_sold" integer DEFAULT 0)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_player_games_on_game_id" ON "player_games"  ("game_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_player_games_on_market_id" ON "player_games"  ("market_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_player_games_on_player_id" ON "player_games"  ("player_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "players" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "players" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sportradar_id" character varying, "sport_id" uuid NOT NULL, "first_name" character varying, "last_name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "position" character varying, "team_id" uuid)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_players_on_sport_id" ON "players"  ("sport_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_players_on_team_id" ON "players"  ("team_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "sports" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "sports" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "teams" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "teams" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sport_id" uuid NOT NULL, "sportradar_id" character varying, "alias" character varying, "name" character varying, "market" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_teams_on_sport_id" ON "teams"  ("sport_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "transactions" CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "user_id" uuid NOT NULL, "deposit" boolean, "status" integer DEFAULT 0, "amount" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "bonus_amount" integer DEFAULT 0)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_transactions_on_user_id" ON "transactions"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "confirmation_token" character varying, "confirmed_at" timestamp, "confirmation_sent_at" timestamp, "unconfirmed_email" character varying, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" character varying, "locked_at" timestamp, "jti" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "winnings" integer DEFAULT 0, "bonus_balance" integer DEFAULT 0, "color" character varying, "reset_code" character varying, "first_name" character varying, "last_name" character varying, "username" character varying, "order_privacy" integer DEFAULT 0, "tsevo_status" integer DEFAULT 0, "date_of_birth" date, "unplayed_deposits" integer DEFAULT 0, "activity_score" integer DEFAULT 0, "one_signal_id" character varying)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_confirmation_token" ON "users"  ("confirmation_token")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_jti" ON "users"  ("jti")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_unlock_token" ON "users"  ("unlock_token")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_453b7b85cf"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "friendships" ADD CONSTRAINT "fk_rails_e3733b59b7"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "friendships" ADD CONSTRAINT "fk_rails_d78dc9c7fd"
+FOREIGN KEY ("friend_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_0ec38486d7"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_0a5c0aaa56"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_5b075ea244"
+FOREIGN KEY ("away_team_id")
+  REFERENCES "teams" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_0b3e4ed788"
+FOREIGN KEY ("home_team_id")
+  REFERENCES "teams" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_a1c73a4cf2"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_1e09b5dabf"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "markets" ADD CONSTRAINT "fk_rails_20633048f0"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_7d6db210d2"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_f868b47f6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "payouts" ADD CONSTRAINT "fk_rails_1a4c3b11ee"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "payouts" ADD CONSTRAINT "fk_rails_40d29ae8eb"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "payouts" ADD CONSTRAINT "fk_rails_6405f6554f"
+FOREIGN KEY ("player_game_id")
+  REFERENCES "player_games" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "player_game_stats" ADD CONSTRAINT "fk_rails_7e8da8a1d9"
+FOREIGN KEY ("player_game_id")
+  REFERENCES "player_games" ("id")
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "player_games" ADD CONSTRAINT "fk_rails_ca29b77afd"
+FOREIGN KEY ("game_id")
+  REFERENCES "games" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "player_games" ADD CONSTRAINT "fk_rails_da66834356"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "player_games" ADD CONSTRAINT "fk_rails_9c9f7c8f33"
+FOREIGN KEY ("player_id")
+  REFERENCES "players" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "players" ADD CONSTRAINT "fk_rails_3846bb5a21"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "players" ADD CONSTRAINT "fk_rails_8880a915a5"
+FOREIGN KEY ("team_id")
+  REFERENCES "teams" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "teams" ADD CONSTRAINT "fk_rails_11a3a42f5f"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "transactions" ADD CONSTRAINT "fk_rails_77364e6416"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220114112046)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210622155647),
+(20210622160322),
+(20210622161336),
+(20210727170649),
+(20210826210940),
+(20210830185139),
+(20210830202301),
+(20210910120631),
+(20210925154521),
+(20210925170210),
+(20211006174457),
+(20211007125148),
+(20220112190249);
+
+[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-05-26 17:48:36.148138"], ["updated_at", "2022-05-26 17:48:36.148138"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "81448967b22076fc9dda2b2f8956bcb3a54850b7"], ["created_at", "2022-05-26 17:48:36.151956"], ["updated_at", "2022-05-26 17:48:36.151956"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (3.9ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "pgcrypto"[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_admin_comments" CASCADE[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" bigserial primary key, "namespace" character varying, "body" text, "resource_type" character varying, "resource_id" bigint, "author_type" character varying, "author_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments"  ("author_type", "author_id")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_namespace" ON "active_admin_comments"  ("namespace")[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments"  ("resource_type", "resource_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" uuid NOT NULL, "blob_id" uuid NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "admin_users" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_email" ON "admin_users"  ("email")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_reset_password_token" ON "admin_users"  ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "comments" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "order_id" uuid NOT NULL, "user_id" uuid NOT NULL, "message" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_order_id" ON "comments"  ("order_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "friendships" CASCADE[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "friendships" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "user_id" uuid, "friend_id" uuid, "status" integer DEFAULT 0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "activity_score" integer DEFAULT 0)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_friendships_on_friend_id" ON "friendships"  ("friend_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_friendships_on_user_id_and_friend_id" ON "friendships"  ("user_id", "friend_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_friendships_on_user_id" ON "friendships"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "games" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sportradar_id" character varying, "sport_id" uuid NOT NULL, "home_team_score" integer, "away_team_score" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "game_status" integer DEFAULT 0, "week" character varying, "home_team_id" uuid, "away_team_id" uuid, "scheduled_time" timestamp, "market_id" uuid, "quarter" integer, "clock" character varying)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_away_team_id" ON "games"  ("away_team_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_home_team_id" ON "games"  ("home_team_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_market_id" ON "games"  ("market_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_games_on_sport_id" ON "games"  ("sport_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "likes" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "order_id" uuid NOT NULL, "user_id" uuid NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_order_id" ON "likes"  ("order_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_user_id" ON "likes"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "markets" CASCADE[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "markets" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sport_id" uuid, "start_time" timestamp, "end_time" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_markets_on_sport_id" ON "markets"  ("sport_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "orders" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "user_id" uuid NOT NULL, "title" character varying, "short" boolean, "price_per_share" integer, "num_shares" integer, "total_value" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "player_game_id" uuid NOT NULL, "compliant" boolean DEFAULT FALSE, "market_id" uuid, "privacy" integer DEFAULT 0, "refunded" boolean DEFAULT FALSE, "ride_fade_id" uuid)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_market_id" ON "orders"  ("market_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_player_game_id" ON "orders"  ("player_game_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_user_id" ON "orders"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "payouts" CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "payouts" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "player_game_id" uuid NOT NULL, "order_id" uuid NOT NULL, "amount" integer, "status" integer DEFAULT 0, "created" timestamp, "completed" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "market_id" uuid)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_payouts_on_market_id" ON "payouts"  ("market_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_payouts_on_order_id" ON "payouts"  ("order_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_payouts_on_player_game_id" ON "payouts"  ("player_game_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "platform_variables" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "platform_variables" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "variable_name" character varying, "value" integer DEFAULT 0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "player_game_stats" CASCADE[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "player_game_stats" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "stat_name" character varying, "value" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "player_sportradar_id" character varying, "game_sportradar_id" character varying, "player_game_id" uuid)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_player_game_stats_on_player_game_id" ON "player_game_stats"  ("player_game_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "player_games" CASCADE[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "player_games" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "player_id" uuid NOT NULL, "game_id" uuid NOT NULL, "date" timestamp, "score" float, "projection" float DEFAULT 0.0, "injury_status" integer DEFAULT 0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "shares_bought" integer DEFAULT 0, "shares_sold" integer DEFAULT 0, "market_id" uuid, "dollars_bought" integer DEFAULT 0, "dollars_sold" integer DEFAULT 0)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_player_games_on_game_id" ON "player_games"  ("game_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_player_games_on_market_id" ON "player_games"  ("market_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_player_games_on_player_id" ON "player_games"  ("player_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "players" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "players" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sportradar_id" character varying, "sport_id" uuid NOT NULL, "first_name" character varying, "last_name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "position" character varying, "team_id" uuid)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_players_on_sport_id" ON "players"  ("sport_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_players_on_team_id" ON "players"  ("team_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "sports" CASCADE[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "sports" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "teams" CASCADE[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "teams" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "sport_id" uuid NOT NULL, "sportradar_id" character varying, "alias" character varying, "name" character varying, "market" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_teams_on_sport_id" ON "teams"  ("sport_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "transactions" CASCADE[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "user_id" uuid NOT NULL, "deposit" boolean, "status" integer DEFAULT 0, "amount" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "bonus_amount" integer DEFAULT 0)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_transactions_on_user_id" ON "transactions"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "confirmation_token" character varying, "confirmed_at" timestamp, "confirmation_sent_at" timestamp, "unconfirmed_email" character varying, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" character varying, "locked_at" timestamp, "jti" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "winnings" integer DEFAULT 0, "bonus_balance" integer DEFAULT 0, "color" character varying, "reset_code" character varying, "first_name" character varying, "last_name" character varying, "username" character varying, "order_privacy" integer DEFAULT 0, "tsevo_status" integer DEFAULT 0, "date_of_birth" date, "unplayed_deposits" integer DEFAULT 0, "activity_score" integer DEFAULT 0, "one_signal_id" character varying)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_confirmation_token" ON "users"  ("confirmation_token")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_jti" ON "users"  ("jti")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_unlock_token" ON "users"  ("unlock_token")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_453b7b85cf"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "friendships" ADD CONSTRAINT "fk_rails_e3733b59b7"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "friendships" ADD CONSTRAINT "fk_rails_d78dc9c7fd"
+FOREIGN KEY ("friend_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_0ec38486d7"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_0a5c0aaa56"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_5b075ea244"
+FOREIGN KEY ("away_team_id")
+  REFERENCES "teams" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "games" ADD CONSTRAINT "fk_rails_0b3e4ed788"
+FOREIGN KEY ("home_team_id")
+  REFERENCES "teams" ("id")
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_a1c73a4cf2"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_1e09b5dabf"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "markets" ADD CONSTRAINT "fk_rails_20633048f0"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_7d6db210d2"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_f868b47f6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "payouts" ADD CONSTRAINT "fk_rails_1a4c3b11ee"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "payouts" ADD CONSTRAINT "fk_rails_40d29ae8eb"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "payouts" ADD CONSTRAINT "fk_rails_6405f6554f"
+FOREIGN KEY ("player_game_id")
+  REFERENCES "player_games" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "player_game_stats" ADD CONSTRAINT "fk_rails_7e8da8a1d9"
+FOREIGN KEY ("player_game_id")
+  REFERENCES "player_games" ("id")
+[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "player_games" ADD CONSTRAINT "fk_rails_ca29b77afd"
+FOREIGN KEY ("game_id")
+  REFERENCES "games" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "player_games" ADD CONSTRAINT "fk_rails_da66834356"
+FOREIGN KEY ("market_id")
+  REFERENCES "markets" ("id")
+[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "player_games" ADD CONSTRAINT "fk_rails_9c9f7c8f33"
+FOREIGN KEY ("player_id")
+  REFERENCES "players" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "players" ADD CONSTRAINT "fk_rails_3846bb5a21"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "players" ADD CONSTRAINT "fk_rails_8880a915a5"
+FOREIGN KEY ("team_id")
+  REFERENCES "teams" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "teams" ADD CONSTRAINT "fk_rails_11a3a42f5f"
+FOREIGN KEY ("sport_id")
+  REFERENCES "sports" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "transactions" ADD CONSTRAINT "fk_rails_77364e6416"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220114112046)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210622155647),
+(20210622160322),
+(20210622161336),
+(20210727170649),
+(20210826210940),
+(20210830185139),
+(20210830202301),
+(20210910120631),
+(20210925154521),
+(20210925170210),
+(20211006174457),
+(20211007125148),
+(20220112190249);
+
+[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-05-26 17:48:36.377269"], ["updated_at", "2022-05-26 17:48:36.377269"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-05-26 17:48:36.379951"], ["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "81448967b22076fc9dda2b2f8956bcb3a54850b7"], ["created_at", "2022-05-26 17:48:36.381953"], ["updated_at", "2022-05-26 17:48:36.381953"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Killing session flusher
+Shutting down background worker

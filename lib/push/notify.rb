@@ -2,7 +2,7 @@ module Push
   class Notify
     include HTTParty
     HEADERS = { "Authorization" => "Basic #{ENV['ONESIGNAL_API_KEY']}", "Content-Type" => "application/json" }
-    # Create new file to storage log of pushes.
+    # Create new file to store log of pushes.
     @push_logger = ::Logger.new(Rails.root.join('log', 'push.log'))
     # Set Onesignal URI
     @uri = URI.parse('https://onesignal.com/api/v1/notifications')
@@ -33,7 +33,7 @@ module Push
     # Simply do not send user_id for a mass notification. 
     def self.send(type:, title:, contents:, user_id: nil)
       user_id ? 
-                send_single_push(type:, title:, contents:, user_id:)
+                send_single_push(type:, title:, contents:, user_id:) :
                 send_mass_push(type:, title:, contents:)
     end
   end

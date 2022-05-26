@@ -69,7 +69,6 @@ module Api::V1
       User,
       Users::SessionsController,
       Users::RegistrationsController,
-      Admin::AdminUsersController,
       # ErrorModel,
       self,
     ].freeze

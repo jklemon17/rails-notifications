@@ -873,3 +873,89 @@ FOREIGN KEY ("user_id")
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Killing session flusher
 Shutting down background worker
+Sentry HTTP Transport will connect to https://o282181.ingest.sentry.io
+Initializing the background worker with 2 threads
+[Sessions] Sessions won't be captured without a valid release
+Started GET "/docs" for 127.0.0.1 at 2022-05-26 13:50:03 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/api_html/dist/index.html?url=/apidocs" for 127.0.0.1 at 2022-05-26 13:50:03 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api_html/dist/index.html"):
+  
+actionpack (6.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+sentry-ruby-core (5.3.1) lib/sentry/rack/capture_exceptions.rb:26:in `block (2 levels) in call'
+sentry-ruby-core (5.3.1) lib/sentry/hub.rb:199:in `with_session_tracking'
+sentry-ruby-core (5.3.1) lib/sentry-ruby.rb:351:in `with_session_tracking'
+sentry-ruby-core (5.3.1) lib/sentry/rack/capture_exceptions.rb:17:in `block in call'
+sentry-ruby-core (5.3.1) lib/sentry/hub.rb:59:in `with_scope'
+sentry-ruby-core (5.3.1) lib/sentry-ruby.rb:331:in `with_scope'
+sentry-ruby-core (5.3.1) lib/sentry/rack/capture_exceptions.rb:16:in `call'
+actionpack (6.0.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.5) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.5) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.5) lib/rails/engine.rb:527:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-05-26 13:50:03 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+sentry-ruby-core (5.3.1) lib/sentry/rack/capture_exceptions.rb:26:in `block (2 levels) in call'
+sentry-ruby-core (5.3.1) lib/sentry/hub.rb:199:in `with_session_tracking'
+sentry-ruby-core (5.3.1) lib/sentry-ruby.rb:351:in `with_session_tracking'
+sentry-ruby-core (5.3.1) lib/sentry/rack/capture_exceptions.rb:17:in `block in call'
+sentry-ruby-core (5.3.1) lib/sentry/hub.rb:59:in `with_scope'
+sentry-ruby-core (5.3.1) lib/sentry-ruby.rb:331:in `with_scope'
+sentry-ruby-core (5.3.1) lib/sentry/rack/capture_exceptions.rb:16:in `call'
+actionpack (6.0.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.5) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.5) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.5) lib/rails/engine.rb:527:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/apidocs" for 127.0.0.1 at 2022-05-26 13:50:14 -0400
+  
+NameError (uninitialized constant Api::V1::ApidocsController::Admin):
+  
+app/controllers/api/v1/apidocs_controller.rb:72:in `<class:ApidocsController>'
+app/controllers/api/v1/apidocs_controller.rb:2:in `<module:V1>'
+app/controllers/api/v1/apidocs_controller.rb:1:in `<top (required)>'
+Killing session flusher
+Shutting down background worker

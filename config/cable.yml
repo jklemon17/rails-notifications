@@ -1,0 +1,16 @@
+#TODO: Replace with AWS URL (should all of these really use the same Redis instance?)
+development:
+  adapter: redis
+  url: redis://localhost:6379
+
+staging:
+  adapter: redis
+  url: <%= ENV['REDIS'] %>
+
+test:
+  adapter: redis
+  url: redis://localhost:6379
+
+production:
+  adapter: redis
+  url: <%= ENV['REDIS'] %>
